@@ -70,7 +70,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'allauth.account.middleware.AccountMiddleware',
-    #'user.middleware.VisitorTrackingMiddleware',
 ]
 
 AUTHENTICATION_BACKENDS=[
@@ -104,6 +103,12 @@ WSGI_APPLICATION = 'Hmart.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+'''DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -113,12 +118,24 @@ DATABASES = {
         'HOST': 'ecommerce.c7uo2kw8g6uf.eu-north-1.rds.amazonaws.com',  
         'PORT': '3306',      
     }
-
-
+}
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
-
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
+]
 
 
 # Internationalization
@@ -165,8 +182,8 @@ DEFAULT_FROM_EMAIL = 'MY APP'
 SOCIALACCOUNT_PROVIDERS={
     'google':{
         'APP':{
-            'client_id':os.getenv("client_id"),
-            'secret':os.getenv("secret"),
+            'client_id': os.getenv("Client"),
+            'secret':os.getenv("Screat"),
         },
         'SCOPE':['profile','email',],
         'AUTH_PARAMS':{'access_type':'online'},
