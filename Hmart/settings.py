@@ -32,7 +32,7 @@ SECRET_KEY = 'django-insecure-u$ik_vwamoqc45p8^-lsxoqlx6xh3tw#=bz^k4g32sj7+i(py0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['13.60.184.100']
 
 
 # Application definition
@@ -106,10 +106,13 @@ WSGI_APPLICATION = 'Hmart.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'ecommerce',
+        'USER': 'admin',
+        'PASSWORD': 'tymfugit',
+        'HOST': 'ecommerce.c7uo2kw8g6uf.eu-north-1.rds.amazonaws.com',  
+        'PORT': '3306',      
     }
-}
 
 
 # Password validation
